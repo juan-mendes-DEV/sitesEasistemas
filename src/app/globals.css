@@ -1,26 +1,161 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0B0A10;
+  --foreground: #F5F2EB;
+
+  /* Paleta Code Maestro Tech */
+  --cm-background: #0B0A10;
+  --cm-surface: #17141F;
+  --cm-surface-hover: #1F1A2C;
+  --cm-border: #2A2438;
+  --cm-gold: #D4AF70;
+  --cm-gold-soft: #C39A55;
+  --cm-copper: #B87333;
+  --cm-copper-soft: #A67C52;
+  --cm-violet: #8B5CF6;
+  --cm-violet-soft: #7C3AED;
+  --cm-violet-glow: #8B5CF6;
+  --cm-text-primary: #F5F2EB;
+  --cm-text-secondary: #A9A3B4;
+  --cm-text-muted: #7A7488;
+  --cm-success: #4ADE80;
+
+  /* Gradientes */
+  --cm-gradient-obsidian: linear-gradient(135deg, #0B0A10 0%, #17141F 100%);
+  --cm-gradient-violet: linear-gradient(135deg, #8B5CF6 0%, #5B21B6 100%);
+  --cm-gradient-gold-violet: linear-gradient(135deg, #D4AF70 0%, #8B5CF6 100%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--cm-surface);
+  --color-surface-hover: var(--cm-surface-hover);
+  --color-border: var(--cm-border);
+  --color-gold: var(--cm-gold);
+  --color-gold-soft: var(--cm-gold-soft);
+  --color-copper: var(--cm-copper);
+  --color-copper-soft: var(--cm-copper-soft);
+  --color-violet: var(--cm-violet);
+  --color-violet-soft: var(--cm-violet-soft);
+  --color-text-primary: var(--cm-text-primary);
+  --color-text-secondary: var(--cm-text-secondary);
+  --color-text-muted: var(--cm-text-muted);
+  --color-success: var(--cm-success);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0B0A10;
+    --foreground: #F5F2EB;
   }
+}
+
+/* Animações leves — respeitam prefers-reduced-motion */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes cm-fade-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes cm-slide-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes cm-shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes cm-glow-pulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.06); }
+  }
+
+  @keyframes cm-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .animate-cm-fade-in {
+    animation: cm-fade-in 0.7s ease-out forwards;
+  }
+
+  .animate-cm-slide-up {
+    animation: cm-slide-up 0.8s ease-out forwards;
+  }
+
+  .animate-cm-glow {
+    animation: cm-glow-pulse 3s ease-in-out infinite;
+  }
+
+  .animate-cm-float {
+    animation: cm-float 6s ease-in-out infinite;
+  }
+
+  .animate-cm-shimmer {
+    animation: cm-shimmer 2.5s linear infinite;
+  }
+
+  .animate-cm-pulse {
+    animation: cm-glow-pulse 3s ease-in-out infinite;
+  }
+
+  .transition-cm {
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+}
+
+/* Utilitários de aparência */
+.text-balance {
+  text-wrap: balance;
+}
+
+.glass-surface {
+  background: rgba(23, 20, 31, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--cm-border);
+}
+
+.gold-underline {
+  background: var(--cm-gradient-gold-violet);
+  height: 2px;
+  border-radius: 999px;
+}
+
+.violet-glow {
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.35);
+}
+
+.gold-glow {
+  box-shadow: 0 0 24px rgba(212, 175, 112, 0.3);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Seleção de texto em dourado */
+::selection {
+  background: var(--cm-gold);
+  color: #0B0A10;
+}
+
+/* Foco visível para navegação por teclado */
+:focus-visible {
+  outline: 2px solid var(--cm-gold);
+  outline-offset: 2px;
 }

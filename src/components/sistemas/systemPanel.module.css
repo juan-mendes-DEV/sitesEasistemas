@@ -1,0 +1,588 @@
+/*
+ * Port de `projetosAdd/3-comercios-independentes/styles.css` para CSS Modules.
+ * Todos os seletores ficam sob as classes com hash (`.pagina`/`.shell`) para
+ * que nenhum estilo vaze para o restante do site — o CSS de origem usava
+ * seletores globais, como alerta o README de integração.
+ *
+ * O CSS de origem é idêntico nos três sistemas; só a paleta (`--bg`, `--ink`,
+ * etc., aplicada inline pela raiz) e as classes de variante mudam.
+ */
+
+.pagina {
+  min-height: 100svh;
+  background: var(--bg);
+  color: var(--ink);
+  font: 14px Arial, sans-serif;
+}
+
+.pagina button,
+.pagina input,
+.pagina select {
+  font: inherit;
+}
+
+.pagina button {
+  cursor: pointer;
+}
+
+.pagina button:focus-visible,
+.pagina a:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.shell {
+  max-width: 1440px;
+  margin: auto;
+  padding: 0 6%;
+}
+
+.pagina header {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-weight: 900;
+  font-size: 26px;
+  letter-spacing: -1.6px;
+}
+
+.header-right {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-size: 11px;
+}
+
+.online {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.online::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.avatar {
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  padding: 12px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 35px;
+  padding: 52px 0 42px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.2px;
+  color: var(--accent);
+}
+
+.pagina h1 {
+  font-size: clamp(42px, 5.3vw, 75px);
+  line-height: 1.04;
+  letter-spacing: -3.5px;
+  margin: 22px 0;
+  font-weight: 700;
+}
+
+.pagina p {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 420px;
+  margin: 1em 0;
+}
+
+.art {
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--art);
+}
+
+.art::before,
+.art::after {
+  content: "";
+  position: absolute;
+  border: 1px solid var(--artline);
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  transform: translate(90px, -40px);
+}
+
+.art::after {
+  transform: translate(-60px, 100px);
+  width: 230px;
+  height: 230px;
+}
+
+.symbol {
+  font-size: 115px;
+  z-index: 1;
+  transform: rotate(-13deg);
+}
+
+.art-note {
+  position: absolute;
+  bottom: 25px;
+  left: 28px;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  line-height: 1.6;
+}
+
+.serial {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 10px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.stat {
+  border-top: 1px solid var(--line);
+  padding: 21px 0;
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 32px;
+  letter-spacing: -1.5px;
+  margin: 12px 0;
+}
+
+.stat small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 28px;
+}
+
+.pagina h2 {
+  font-size: 21px;
+  letter-spacing: -0.6px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.panel-head p {
+  font-size: 12px;
+  margin: 7px 0 0;
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--buttontext);
+  border: 0;
+  border-radius: 5px;
+  padding: 14px 19px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.filterbar {
+  padding: 0 28px 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tabs button {
+  background: none;
+  border: 0;
+  color: var(--muted);
+  padding: 9px 12px;
+  font-size: 11px;
+  border-radius: 4px;
+}
+
+.tabs button.active {
+  background: var(--soft);
+  color: var(--ink);
+}
+
+.pagina input,
+.pagina select {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+  padding: 11px 12px;
+  border-radius: 5px;
+}
+
+.search {
+  width: 220px;
+  font-size: 12px;
+}
+
+.table-wrap {
+  overflow: auto;
+}
+
+.pagina table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  min-width: 730px;
+}
+
+.pagina th {
+  background: var(--soft);
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  color: var(--muted);
+  font-weight: 400;
+  padding: 15px 28px;
+}
+
+.pagina td {
+  padding: 20px 28px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.pagina td:first-child {
+  font-weight: 700;
+}
+
+.pagina td small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 7px;
+  font-weight: 400;
+}
+
+.pill {
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 6px 10px;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.pill.state-1 {
+  background: var(--soft);
+  color: var(--accent);
+}
+
+.pill.state-2 {
+  opacity: 0.65;
+}
+
+.actions {
+  white-space: nowrap;
+}
+
+.actions button {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: none;
+  color: var(--ink);
+  padding: 6px 8px;
+  font-size: 10px;
+  margin: 2px;
+}
+
+.empty {
+  padding: 55px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.pagina footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 0 30px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.pagina footer a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: #0009;
+  backdrop-filter: blur(5px);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.dialog {
+  width: 440px;
+  max-width: 92vw;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px;
+  background: var(--panel);
+  color: var(--ink);
+  max-height: calc(100svh - 32px);
+  overflow: auto;
+}
+
+.dialog-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close {
+  background: none;
+  border: 0;
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.pagina label {
+  display: block;
+  margin: 17px 0;
+  font-size: 12px;
+}
+
+.pagina label input,
+.pagina label select {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+}
+
+.form .primary {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--bg);
+  padding: 13px 22px;
+  border-radius: 8px;
+  display: none;
+  z-index: 5;
+  max-width: 92vw;
+  text-align: center;
+}
+
+/* Variantes por sistema (antes: body.barbearia / body.cafeteria / …) */
+.variante-barbearia h1 {
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.variante-barbearia .panel {
+  border-radius: 0;
+}
+
+.variante-barbearia .art {
+  border-radius: 0;
+}
+
+.variante-barbearia .symbol {
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  line-height: 185px;
+  color: var(--accent);
+  font-size: 120px;
+}
+
+.variante-cafeteria h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.variante-cafeteria .art {
+  border-radius: 150px 150px 8px 8px;
+}
+
+.variante-cafeteria .symbol {
+  font-size: 140px;
+  filter: sepia(0.3);
+}
+
+.variante-loja-roupas .art {
+  border-radius: 90px 8px 90px 8px;
+}
+
+.variante-loja-roupas .symbol {
+  width: 145px;
+  height: 170px;
+  background: linear-gradient(135deg, #d6c3f3, #b09cdd);
+  border-radius: 65px 65px 15px 15px;
+  box-shadow: 35px 15px 0 #e9d7a6;
+  color: white;
+  text-align: center;
+  line-height: 150px;
+}
+
+.variante-loja-roupas h1 {
+  font-weight: 400;
+  letter-spacing: -3px;
+}
+
+@media (max-width: 750px) {
+  .shell {
+    padding: 0 20px;
+  }
+
+  .pagina header {
+    height: 78px;
+  }
+
+  .header-right {
+    gap: 12px;
+  }
+
+  .header-right > span:first-child {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 35px 0;
+    gap: 20px;
+  }
+
+  .pagina h1 {
+    font-size: 50px;
+  }
+
+  .art {
+    min-height: 210px;
+  }
+
+  .symbol {
+    font-size: 90px;
+  }
+
+  .stats {
+    gap: 12px;
+  }
+
+  .stat strong {
+    font-size: 25px;
+  }
+
+  .stat span {
+    font-size: 10px;
+  }
+
+  .panel-head {
+    padding: 20px 15px;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .pagina h2 {
+    font-size: 18px;
+  }
+
+  .panel-head p {
+    font-size: 10px;
+  }
+
+  .primary {
+    padding: 12px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .filterbar {
+    padding: 0 15px 20px;
+    flex-direction: column;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .pagina footer {
+    gap: 15px;
+    font-size: 9px;
+  }
+
+  .art-note {
+    font-size: 9px;
+  }
+
+  /* A mídia da origem (`.symbol{font-size:90px}`) perdia em especificidade
+     para a variante cafeteria (140px), cobrindo a nota da arte no celular;
+     aqui a intenção da origem é restaurada para telas pequenas. As duas
+     primeiras classes convivem na mesma div raiz (seletor adjacente). */
+  .pagina.variante-cafeteria .symbol {
+    font-size: 90px;
+  }
+}
+
+/* Ajuste extra ausente na origem: títulos não estouram 320px. */
+@media (max-width: 400px) {
+  .pagina h1 {
+    font-size: 34px;
+  }
+}
